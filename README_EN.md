@@ -50,7 +50,7 @@ When a new version is out, you have two methods to update:
 
 ## ⌨️ Binds
 
-![Keyboard Layout](keyboard-layout.png)
+![Keyboard Layout](assets/keyboard_layout.png)
 
 The configuration uses **scancodes** instead of key names for better compatibility across different keyboard layouts. Each key is bound using its physical position on the keyboard.
 

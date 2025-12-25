@@ -55,7 +55,7 @@ Cuando salga una nueva versión, tienes dos métodos para actualizar:
 
 ## ⌨️ Binds
 
-![Keyboard Layout](keyboard-layout.png)
+![Keyboard Layout](assets/keyboard_layout.png)
 
 La configuración usa **scancodes** en lugar de nombres de teclas para mejor compatibilidad entre diferentes distribuciones de teclado. Cada tecla está vinculada usando su posición física en el teclado.
 
