@@ -2,6 +2,8 @@
 
 A comprehensive and optimized Counter-Strike 2 configuration with useful scripts, documented commands, and professional settings.
 
+> **Note:** This is a personalized fork/copy of [ArminC AutoExec](https://github.com/armync/ArminC-AutoExec), customized to my personal preferences and playstyle. Some `.cfg` files have been modified according to my needs.
+
 ## 📥 Installation
 
 ### Downloading and Installing Steps:
@@ -84,5 +86,11 @@ The config is organized into multiple files for easy customization:
 - **alwj0/network.cfg**: Network optimization settings
 - **alwj0/script.cfg**: Custom scripts and automation
 - **alwj0/video.cfg**: Video and graphics settings
+
+## 🙏 Credits
+
+This configuration is based on [ArminC AutoExec](https://github.com/armync/ArminC-AutoExec) by [@armync](https://github.com/armync). This repository is a personalized fork with custom modifications to suit my personal preferences and playstyle.
+
+Original repository: [https://github.com/armync/ArminC-AutoExec](https://github.com/armync/ArminC-AutoExec)
 
 

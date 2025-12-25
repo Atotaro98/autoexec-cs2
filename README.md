@@ -2,6 +2,8 @@
 
 A comprehensive and optimized Counter-Strike 2 configuration with useful scripts, documented commands, and professional settings.
 
+> **Note:** This is a personalized fork/copy of [ArminC AutoExec](https://github.com/armync/ArminC-AutoExec), customized to my personal preferences and playstyle. Some `.cfg` files have been modified according to my needs.
+
 ## 📖 Documentation
 
 Choose your language to view the installation and configuration guide:
@@ -35,6 +37,14 @@ The configuration uses **scancodes** instead of key names for better compatibili
 - 🩷 **Pink**: Scripts
 - 🔴 **Red**: No binds allowed
 - 🟡 **Yellow**: New placements & infrequent commands
+
+---
+
+## 🙏 Credits
+
+This configuration is based on [ArminC AutoExec](https://github.com/armync/ArminC-AutoExec) by [@armync](https://github.com/armync). This repository is a personalized fork with custom modifications to suit my personal preferences and playstyle.
+
+Original repository: [https://github.com/armync/ArminC-AutoExec](https://github.com/armync/ArminC-AutoExec)
 
 ---
 
