@@ -192,3 +192,5 @@ Si después de usar High Ping sigues experimentando problemas:
 
 **Última actualización**: Configuraciones optimizadas para CS2 (2024)
 
+
+
