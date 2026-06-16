@@ -108,6 +108,33 @@ CS2 **no longer has** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. The only real ne
 - **Steam Cloud** can overwrite/delete your files — consider disabling Cloud for CS2 if you hand-edit.
 - **Legal scripts:** this config uses **no** null-binds / automated counter-strafe (those get you kicked for "Input Automation" since Aug 2024). The jumpthrow is manual and scroll-wheel bhop is normal input → all legal in official MM.
 
+## 🎯 Crosshair code
+
+Import the crosshair directly in **CS2 → Settings → Game → Crosshair → _Share or Import_ → paste the code → _Import_**:
+
+```
+CSGO-TaM3Q-GFU5p-J4Mtu-bSqZw-vyJzN
+```
+
+> This is donk's **official (green)** crosshair. This repo uses **the same shape in cyan** (`cl_crosshaircolor_R 0 / G 255 / B 255`). Importing donk's code switches it to **green** and, since the menu overrides the autoexec, it sticks; to keep cyan don't import it (it already ships in `crosshair.cfg`) or set `cl_crosshaircolor_B 255` again.
+
+## ✅ How to verify it loads correctly
+
+1. Open the console (`` ` `` key) and run `exec autoexec.cfg`. You should hear the confirmation beep at the end.
+2. **Look for red `Unknown command "xxx"` lines.** This config **should throw none** (that's why the CS:GO cvars were stripped). If one appears, that command is the culprit.
+3. **Check values** by typing the cvar **without a value** (it prints the current one):
+
+   | Command | Should show |
+   | --- | --- |
+   | `sensitivity` | `0.8` |
+   | `cl_crosshairstyle` | `4` |
+   | `cl_net_buffer_ticks` | `0` |
+   | `rate` | `786432` |
+   | `fps_max` | `600` |
+
+4. In-game, type `status`: check **your row** (ping / loss / rate). If `loss` stays at `0`, leave `netmode` **OFF**.
+5. Press **F9** to toggle `netmode`: you'll see `[NET] buffer ON` / `[NET] buffer OFF` in console.
+
 ## 🔄 Updating
 
 When a new version is out, you have two methods to update:

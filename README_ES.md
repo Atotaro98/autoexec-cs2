@@ -119,6 +119,33 @@ En CS2 ya **no existen** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. La única pal
 - **Steam Cloud** puede pisar o borrar tus archivos: si editas a mano, considera desactivar la nube para CS2.
 - **Scripts legales:** este config **no** usa null-binds / counter-strafe automatizado (te _kickearían_ por "Input Automation" desde ago-2024). El jumpthrow es manual y el bhop con rueda es input normal → todo legal en MM oficial.
 
+## 🎯 Código de mira
+
+Importa la mira directamente en **CS2 → Configuración → Juego → Mira → _Compartir o importar_ → pega el código → _Importar_**:
+
+```
+CSGO-TaM3Q-GFU5p-J4Mtu-bSqZw-vyJzN
+```
+
+> Es la mira **oficial de donk (verde)**. Este repo usa **la misma forma pero en cyan** (`cl_crosshaircolor_R 0 / G 255 / B 255`). Si importas el código de donk, la mira pasará a **verde** y, como el menú pisa al autoexec, se quedará así; para mantener el cyan no la importes (ya viene en `crosshair.cfg`) o vuelve a poner `cl_crosshaircolor_B 255`.
+
+## ✅ Cómo comprobar que todo carga bien
+
+1. Abre la consola (tecla `` ` ``) y ejecuta `exec autoexec.cfg`. Al final debe sonar el _beep_ de confirmación.
+2. **Busca líneas en rojo** tipo `Unknown command "xxx"`. Este config **no debería lanzar ninguna** (por eso se limpiaron los cvars de CS:GO). Si aparece alguna, ese comando es el culpable.
+3. **Verifica valores** escribiendo el cvar **sin valor** en consola (devuelve el actual):
+
+   | Comando | Debe mostrar |
+   | --- | --- |
+   | `sensitivity` | `0.8` |
+   | `cl_crosshairstyle` | `4` |
+   | `cl_net_buffer_ticks` | `0` |
+   | `rate` | `786432` |
+   | `fps_max` | `600` |
+
+4. En partida, escribe `status`: mira **tu fila** (ping / loss / rate). Si `loss` se mantiene en `0`, deja `netmode` en **OFF**.
+5. Pulsa **F9** para alternar `netmode`: verás `[NET] buffer ON` / `[NET] buffer OFF` en consola.
+
 ## 🔄 Actualización
 
 Cuando salga una nueva versión, tienes dos métodos para actualizar:
