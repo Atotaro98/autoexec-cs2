@@ -99,7 +99,7 @@ En CS2 ya **no existen** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. La interpolac
 > ⚠️ **Importante:** forzar `cl_net_buffer_ticks 0` pone la interpolación a **0** (`LerpTime=0`), lo que **destroza el registro de balas a ping alto / VPN** (ves al enemigo donde ya no está → apuntas bien pero no haces daño). Por eso este config **deja la red en el DEFAULT de CS2** — `network.cfg` está **desactivado** en el autoexec. El default trae una interpolación que suaviza el jitter y da mejor hitreg en todos los casos.
 
 - El `rate` ya viene en `786432` desde el menú; no hace falta forzar nada más.
-- **`netmode` (F9)** sigue ahí como herramienta **opcional/experimental** por si algún día quieres probar un buffer manual a ping alto. Si notas que va peor, vuelve al default (**reinicia CS2** para resetear el cvar).
+- El config **no toca la red en absoluto** — sin scripts ni toggles. Si alguna vez quieres ajustar el buffer a ping alto, hazlo desde **Configuración → Juego → "Buffering to smooth over packet loss / jitter"** (para ~112ms, prueba el valor **1**; evita `0` y `2`).
 
 ## 🧠 Sensibilidad / eDPI
 
@@ -141,8 +141,7 @@ CSGO-TaM3Q-GFU5p-J4Mtu-bSqZw-vyJzN
    | `rate` | `786432` |
    | `fps_max` | `600` |
 
-4. En partida, escribe `status`: mira **tu fila** (ping / loss / rate). Si `loss` se mantiene en `0`, deja `netmode` en **OFF**.
-5. Pulsa **F9** para alternar `netmode`: verás `[NET] buffer ON` / `[NET] buffer OFF` en consola.
+4. En partida, escribe `status`: mira **tu fila** (ping / loss / rate). Si el `loss` sube, el problema es la conexión/ruta (VPN/servidor), no el config.
 
 ## 🔄 Actualización
 

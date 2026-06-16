@@ -90,7 +90,7 @@ CS2 **no longer has** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. Interpolation is
 > ⚠️ **Important:** forcing `cl_net_buffer_ticks 0` sets interpolation to **0** (`LerpTime=0`), which **wrecks hit registration on high-ping / VPN links** (you see the enemy where they no longer are → you aim right but deal no damage). So this config **leaves networking at the CS2 DEFAULT** — `network.cfg` is **disabled** in the autoexec. The default ships an interpolation that smooths jitter and gives better hitreg everywhere.
 
 - `rate` already comes as `786432` from the menu; nothing else needs forcing.
-- **`netmode` (F9)** is still there as an **optional/experimental** tool if you ever want to try a manual buffer at high ping. If it feels worse, go back to default (**restart CS2** to reset the cvar).
+- The config **doesn't touch networking at all** — no scripts or toggles. If you ever want to tweak the buffer at high ping, do it from **Settings → Game → "Buffering to smooth over packet loss / jitter"** (for ~112ms try value **1**; avoid `0` and `2`).
 
 ## 🧠 Sensitivity / eDPI
 
@@ -132,8 +132,7 @@ CSGO-TaM3Q-GFU5p-J4Mtu-bSqZw-vyJzN
    | `rate` | `786432` |
    | `fps_max` | `600` |
 
-4. In-game, type `status`: check **your row** (ping / loss / rate). If `loss` stays at `0`, leave `netmode` **OFF**.
-5. Press **F9** to toggle `netmode`: you'll see `[NET] buffer ON` / `[NET] buffer OFF` in console.
+4. In-game, type `status`: check **your row** (ping / loss / rate). If `loss` climbs, the problem is the connection/route (VPN/server), not the config.
 
 ## 🔄 Updating
 
