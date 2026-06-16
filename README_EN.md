@@ -87,10 +87,19 @@ donk **uses none**. Optional: `-noreflex` (only for the no-Reflex low-latency ro
 
 CS2 **no longer has** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. Interpolation is driven by **`cl_net_buffer_ticks`**.
 
-> ⚠️ **Important:** forcing `cl_net_buffer_ticks 0` sets interpolation to **0** (`LerpTime=0`), which **wrecks hit registration on high-ping / VPN links** (you see the enemy where they no longer are → you aim right but deal no damage). So this config **leaves networking at the CS2 DEFAULT** — `network.cfg` is **disabled** in the autoexec. The default ships an interpolation that smooths jitter and gives better hitreg everywhere.
+`network.cfg` **pins CS2's defaults on every launch** (defaults [verified against the in-game cvar list](https://github.com/ArmynC/ArminC-CS2-Cvars/blob/main/cvars/cvarlist.md)). That way a value saved into your profile **can never leave networking in a weird state** (e.g. a leftover high `cl_net_buffer_ticks` delaying hit feedback):
 
-- `rate` already comes as `786432` from the menu; nothing else needs forcing.
-- The config **doesn't touch networking at all** — no scripts or toggles. If you ever want to tweak the buffer at high ping, do it from **Settings → Game → "Buffering to smooth over packet loss / jitter"** (for ~112ms try value **1**; avoid `0` and `2`).
+| Cvar | Value (default) |
+| --- | --- |
+| `rate` | `786432` (menu max, competitive standard) |
+| `cl_net_buffer_ticks` | `0` |
+| `cl_net_buffer_ticks_use_interp` | `0` |
+| `cl_tickpacket_desired_queuelength` | `0` |
+| `cl_predict_body_shot_fx` | `0` |
+| `cl_predict_head_shot_fx` | `0` |
+| `cl_predict_kill_ragdolls` | `1` |
+
+> 💡 **At high ping (~100ms+)** you can raise `cl_net_buffer_ticks` to **1** inside `network.cfg` (try `2` only if `1` isn't enough): more buffer = more interpolation cushion but more visual delay. At low ping, keep it `0`.
 
 ## 🧠 Sensitivity / eDPI
 
