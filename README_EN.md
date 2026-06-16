@@ -35,7 +35,78 @@ A comprehensive and optimized Counter-Strike 2 configuration with useful scripts
 
 - **The binds system has changed.** Instead of using the name of the key, there are **scancodes assigned per key**. This ensures compatibility across different keyboard layouts and languages.
 
-- **The crosshair is designed for a 1920x1080 resolution;** in other cases, the experience may vary.
+- **The crosshair, sensitivity and viewmodel follow [donk](https://prosettings.net/players/donk)'s pro setup.** The crosshair is tuned for **1280x960 (4:3 _stretched_)**, which is the setup's resolution. On other resolutions/aspect ratios the size/gap will look different — you may want to retune `cl_crosshairsize` and `cl_crosshairgap`.
+
+- **CS2-clean only:** legacy CS:GO commands that no longer exist in CS2 were removed (`cl_interp`, `cl_interp_ratio`, `cl_cmdrate`, `cl_updaterate`, `m_rawinput`, `cl_bob*`, `net_graph`...). **Do not re-add them** — they throw _"Unknown command"_ on every launch.
+
+## 🎯 Settings that do NOT live in the .cfg (menu + GPU panel) — donk-style
+
+> ⚠️ **This matters.** An autoexec **cannot reliably set resolution or graphics quality** (CS2 stores those in the menu settings). For the full competitive setup, configure them **by hand** in-game and in your GPU control panel.
+
+### 🖥️ Video (Settings → Video)
+
+| Setting | Value (donk) |
+| --- | --- |
+| Resolution | **1280 × 960** |
+| Aspect Ratio | **4:3** |
+| Scaling Mode | **Stretched** |
+| Brightness | 93% |
+| Display Mode | Fullscreen |
+
+### ⚙️ Advanced Video
+
+| Setting | Value (donk) |
+| --- | --- |
+| Boost Player Contrast | **Enabled** |
+| Wait for Vertical Sync | Disabled |
+| NVIDIA Reflex Low Latency | Disabled* |
+| Multisampling AA Mode | 8x MSAA |
+| Global Shadow Quality | High |
+| Dynamic Shadows | All |
+| Model / Texture Detail | **Low** |
+| Texture Filtering Mode | Bilinear |
+| Shader Detail | **Low** |
+| Particle Detail | **Low** |
+| Ambient Occlusion | Disabled |
+| High Dynamic Range | Quality |
+| FidelityFX Super Resolution | Disabled (Highest Quality) |
+
+> *\*Reflex is **contested** in 2026: donk runs it **Off**. The tested low-latency route for (CPU-bound) CS2 is Reflex Off + `-noreflex` launch option + "Low Latency Mode = Ultra" in the NVIDIA panel. **Don't mix** in-game Reflex On with `-noreflex` — pick one.*
+
+### 🟩 NVIDIA Control Panel (for 4:3 _stretched_ + low latency)
+
+- **Adjust desktop size and position → Scaling:** `Full-screen`, **Perform scaling on: GPU**, and tick **"Override the scaling mode set by games"**. _(Without this, 4:3 shows black bars instead of stretching.)_
+- **Manage 3D settings (for cs2.exe):** Low Latency Mode **Ultra** (Reflex Off) / **On** (Reflex On); Power management **Prefer maximum performance**; Vertical sync **Off**; Preferred refresh rate **Highest available**.
+- **AMD (Radeon):** equivalent under _Display → GPU Scaling + Scaling Mode: Full Panel_, and enable _Radeon Anti-Lag_.
+
+### 🚀 Launch options
+
+donk **uses none**. Optional: `-noreflex` (only for the no-Reflex low-latency route) and `-w 1280 -h 960` (force resolution if the menu ignores it).
+
+## 🌐 Networking & Ping (`netmode` toggle on F9)
+
+CS2 **no longer has** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. The only real network knob is **`cl_net_buffer_ticks`**, and it **depends on packet loss/jitter, not raw ping**.
+
+- There's **a single `network.cfg`** with `rate 786432` + `cl_net_buffer_ticks 0` (lowest delay). It works for both low and high ping **as long as loss is 0**.
+- **`netmode` (F9)** flips the buffer: **OFF (default)** for stable links; **ON** only if you **see loss/rubberbanding** (smooths it at the cost of ~15 ms input lag).
+
+> Real example: playing from Spain with friends in Buenos Aires over a VPN (~114 ms but **0 loss**) → stays **OFF**. Raising the buffer there would only add delay for nothing.
+
+## 🧠 Sensitivity / eDPI
+
+| | DPI | Sens | eDPI |
+| --- | --- | --- | --- |
+| This config | 800 | **0.8** | **640** |
+| donk | 800 | 1.25 | 1000 |
+
+640 eDPI is a bit lower (more control/precision, less flick) — well within pro range, but it's a **personal choice**. Edit `mouse.cfg` if you'd rather match donk.
+
+## ⚠️ CS2 gotchas (2026)
+
+- **The in-game menu overrides the autoexec.** Changing a value in Settings makes CS2 save it and overwrite the .cfg next launch. For file values, **edit the .cfg, not the menu**.
+- **`host_writeconfig`** (last line of the autoexec) is still valid, but CS2 auto-saves binds anyway; if something won't persist, check Steam Cloud.
+- **Steam Cloud** can overwrite/delete your files — consider disabling Cloud for CS2 if you hand-edit.
+- **Legal scripts:** this config uses **no** null-binds / automated counter-strafe (those get you kicked for "Input Automation" since Aug 2024). The jumpthrow is manual and scroll-wheel bhop is normal input → all legal in official MM.
 
 ## 🔄 Updating
 

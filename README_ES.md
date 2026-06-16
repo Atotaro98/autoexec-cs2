@@ -38,7 +38,86 @@ Una configuración completa y optimizada para Counter-Strike 2 con scripts útil
 
 - **El sistema de binds ha cambiado.** En lugar de usar el nombre de la tecla, ahora hay **scancodes asignados por tecla**. Esto asegura compatibilidad entre diferentes distribuciones de teclado e idiomas.
 
-- **La mira está diseñada para una resolución de 1920x1080;** en otros casos, la experiencia puede variar.
+- **La mira, sensibilidad y viewmodel siguen el setup pro de [donk](https://prosettings.net/players/donk).** La mira está pensada para **1280x960 (4:3 _stretched_)**, que es la resolución del setup. En otras resoluciones o aspect ratios el tamaño/gap se verá distinto y puede que quieras reajustar `cl_crosshairsize` y `cl_crosshairgap`.
+
+- **Solo limpios y válidos para CS2:** se han eliminado los comandos heredados de CS:GO que ya no existen en CS2 (`cl_interp`, `cl_interp_ratio`, `cl_cmdrate`, `cl_updaterate`, `m_rawinput`, `cl_bob*`, `net_graph`...). **No los vuelvas a añadir**: lanzan _"Unknown command"_ en cada arranque.
+
+## 🎯 Ajustes que NO van en el .cfg (menú + panel GPU) — setup tipo donk
+
+> ⚠️ **Esto es clave.** Un autoexec **no puede fijar de forma fiable la resolución ni la calidad gráfica** (CS2 los guarda en los settings del menú). Si quieres el rendimiento competitivo completo, configúralos **a mano** en el juego y en el panel de tu GPU.
+
+### 🖥️ Vídeo (Configuración → Vídeo)
+
+| Ajuste | Valor (donk) |
+| --- | --- |
+| Resolución | **1280 × 960** |
+| Relación de aspecto | **4:3** |
+| Modo de escalado | **Stretched (estirado)** |
+| Brillo | 93% |
+| Modo de pantalla | Pantalla completa |
+
+### ⚙️ Vídeo avanzado
+
+| Ajuste | Valor (donk) |
+| --- | --- |
+| Boost Player Contrast | **Activado** |
+| Esperar sincronización vertical (V-Sync) | Desactivado |
+| NVIDIA Reflex Low Latency | Desactivado* |
+| Antialiasing (MSAA) | 8x MSAA |
+| Calidad de sombras global | Alta |
+| Sombras dinámicas | Todas |
+| Detalle de modelos/texturas | **Bajo** |
+| Modo de filtrado de texturas | Bilinear |
+| Detalle de sombreado (shaders) | **Bajo** |
+| Detalle de partículas | **Bajo** |
+| Oclusión ambiental | Desactivada |
+| HDR | Calidad |
+| FidelityFX Super Resolution | Desactivado (máxima calidad) |
+
+> *\*Reflex está **discutido** en 2026: donk lo lleva en **Off**. La ruta alternativa testeada para CS2 (limitado por CPU) es Reflex Off + launch option `-noreflex` + "Low Latency Mode = Ultra" en el panel NVIDIA. **No mezcles** Reflex On del juego con `-noreflex`: elige una de las dos.*
+
+### 🟩 Panel de NVIDIA (para 4:3 _stretched_ + baja latencia)
+
+- **Ajustar tamaño y posición del escritorio → Escalado:** `Pantalla completa`, **Realizar escalado en: GPU**, y marca **"Anular el modo de escalado configurado por los juegos"**. _(Sin esto, el 4:3 sale con barras negras en lugar de estirado.)_
+- **Administrar configuración 3D (para cs2.exe):**
+  - Modo de baja latencia: **Ultra** (si juegas con Reflex Off) / **On** (si usas Reflex).
+  - Modo de gestión de energía: **Preferir máximo rendimiento**.
+  - Sincronización vertical: **Desactivada**.
+  - Frecuencia de actualización preferida: **La más alta disponible**.
+- **AMD (Radeon):** equivalente en _Display → GPU Scaling + Scaling Mode: Full Panel_ y _Radeon Anti-Lag_ activado.
+
+### 🚀 Opciones de lanzamiento
+
+donk **no usa** ninguna. Opcionales útiles:
+- `-noreflex` → solo si vas por la ruta de baja latencia sin Reflex (ver nota arriba).
+- `-w 1280 -h 960` → fuerza la resolución si el menú no la respeta.
+
+## 🌐 Red y Ping (toggle `netmode` en F9)
+
+En CS2 ya **no existen** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. La única palanca real de red es **`cl_net_buffer_ticks`**, y **depende de la pérdida/jitter, no del ping bruto**.
+
+- Hay **un solo `network.cfg`** con `rate 786432` + `cl_net_buffer_ticks 0` (mínima latencia). Sirve igual para ping bajo y alto **mientras el _loss_ sea 0**.
+- **`netmode` (tecla F9)** alterna el buffer:
+  - **OFF (por defecto):** conexión estable → lo mejor.
+  - **ON:** solo si **ves _loss_/rubberbanding** (sube el buffer para suavizar, a costa de ~15 ms de input lag).
+
+> Ejemplo real: jugando desde España con amigos en Buenos Aires vía VPN (≈114 ms pero **0 loss**) → se queda en **OFF**. Subir el buffer ahí solo añadiría delay sin ganar nada.
+
+## 🧠 Sensibilidad / eDPI
+
+| | DPI | Sens | eDPI |
+| --- | --- | --- | --- |
+| Este config | 800 | **0.8** | **640** |
+| donk | 800 | 1.25 | 1000 |
+
+640 eDPI es algo más bajo (más control/precisión, menos _flick_) — totalmente dentro del rango pro, pero es una **elección personal**, no "lo óptimo universal". Cámbiala en `mouse.cfg` si prefieres acercarte a donk.
+
+## ⚠️ Gotchas de CS2 (2026)
+
+- **El menú del juego pisa al autoexec.** Si cambias un valor en Configuración, CS2 lo guarda y sobrescribe al .cfg en el siguiente arranque. Para los valores del archivo, **edita el .cfg, no el menú**.
+- **`host_writeconfig`** (última línea del autoexec) sigue siendo válido, pero CS2 ya autoguarda binds; si algo no persiste, revisa Steam Cloud.
+- **Steam Cloud** puede pisar o borrar tus archivos: si editas a mano, considera desactivar la nube para CS2.
+- **Scripts legales:** este config **no** usa null-binds / counter-strafe automatizado (te _kickearían_ por "Input Automation" desde ago-2024). El jumpthrow es manual y el bhop con rueda es input normal → todo legal en MM oficial.
 
 ## 🔄 Actualización
 
