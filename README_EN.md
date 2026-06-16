@@ -83,16 +83,14 @@ A comprehensive and optimized Counter-Strike 2 configuration with useful scripts
 
 donk **uses none**. Optional: `-noreflex` (only for the no-Reflex low-latency route) and `-w 1280 -h 960` (force resolution if the menu ignores it).
 
-## 🌐 Networking & Ping (`netmode` toggle on F9)
+## 🌐 Networking & Ping
 
-CS2 **no longer has** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. The only real network knob is **`cl_net_buffer_ticks`**, and it depends on **timing variance (jitter)** — which exists on long-distance/VPN links **even when loss reads 0**.
+CS2 **no longer has** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. Interpolation is driven by **`cl_net_buffer_ticks`**.
 
-- There's **a single `network.cfg`** with `rate 786432` + `cl_net_buffer_ticks 0` (lowest delay, ideal for your low local ping).
-- **`netmode` (F9)** flips between two modes:
-  - **LOW-PING (default):** buffer 0 → lowest delay. For a stable local link.
-  - **HIGH-PING:** buffer 1 (+queue 2) + hit prediction → gives a cushion so your usercommands arrive on time and **fixes "bullets don't register / no damage"** at ~100ms+. If 1 still feels off, try `cl_net_buffer_ticks 2`.
+> ⚠️ **Important:** forcing `cl_net_buffer_ticks 0` sets interpolation to **0** (`LerpTime=0`), which **wrecks hit registration on high-ping / VPN links** (you see the enemy where they no longer are → you aim right but deal no damage). So this config **leaves networking at the CS2 DEFAULT** — `network.cfg` is **disabled** in the autoexec. The default ships an interpolation that smooths jitter and gives better hitreg everywhere.
 
-> On **high ping (VPN to another continent)** turn **HIGH-PING (F9)** ON even with 0 loss: jitter makes your shots arrive mistimed so the server registers them poorly. On your **local Madrid game**, keep it **LOW-PING**.
+- `rate` already comes as `786432` from the menu; nothing else needs forcing.
+- **`netmode` (F9)** is still there as an **optional/experimental** tool if you ever want to try a manual buffer at high ping. If it feels worse, go back to default (**restart CS2** to reset the cvar).
 
 ## 🧠 Sensitivity / eDPI
 

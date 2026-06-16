@@ -92,16 +92,14 @@ donk **no usa** ninguna. Opcionales útiles:
 - `-noreflex` → solo si vas por la ruta de baja latencia sin Reflex (ver nota arriba).
 - `-w 1280 -h 960` → fuerza la resolución si el menú no la respeta.
 
-## 🌐 Red y Ping (toggle `netmode` en F9)
+## 🌐 Red y Ping
 
-En CS2 ya **no existen** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. La única palanca real de red es **`cl_net_buffer_ticks`**, y depende de la **variación de tiempos (jitter)** — que existe en enlaces largos/VPN **aunque el `loss` marque 0**.
+En CS2 ya **no existen** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. La interpolación la controla **`cl_net_buffer_ticks`**.
 
-- Hay **un solo `network.cfg`** con `rate 786432` + `cl_net_buffer_ticks 0` (mínima latencia, ideal para tu ping bajo local).
-- **`netmode` (tecla F9)** alterna entre dos modos:
-  - **LOW-PING (por defecto):** buffer 0 → mínima latencia. Para conexión local estable.
-  - **HIGH-PING:** buffer 1 (+queue 2) + predicción de impactos → da un colchón para que tus _usercommands_ lleguen a tiempo y **arregla el "las balas no registran / no hago daño"** a ~100ms+. Si con 1 sigue raro, prueba `cl_net_buffer_ticks 2`.
+> ⚠️ **Importante:** forzar `cl_net_buffer_ticks 0` pone la interpolación a **0** (`LerpTime=0`), lo que **destroza el registro de balas a ping alto / VPN** (ves al enemigo donde ya no está → apuntas bien pero no haces daño). Por eso este config **deja la red en el DEFAULT de CS2** — `network.cfg` está **desactivado** en el autoexec. El default trae una interpolación que suaviza el jitter y da mejor hitreg en todos los casos.
 
-> A **ping alto (VPN a otro continente)** activa **HIGH-PING (F9)** aunque el `loss` sea 0: el jitter hace que tus disparos lleguen desfasados y el servidor no los registre bien. En tu **partida local de Madrid**, déjalo en **LOW-PING**.
+- El `rate` ya viene en `786432` desde el menú; no hace falta forzar nada más.
+- **`netmode` (F9)** sigue ahí como herramienta **opcional/experimental** por si algún día quieres probar un buffer manual a ping alto. Si notas que va peor, vuelve al default (**reinicia CS2** para resetear el cvar).
 
 ## 🧠 Sensibilidad / eDPI
 
