@@ -85,12 +85,14 @@ donk **uses none**. Optional: `-noreflex` (only for the no-Reflex low-latency ro
 
 ## 🌐 Networking & Ping (`netmode` toggle on F9)
 
-CS2 **no longer has** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. The only real network knob is **`cl_net_buffer_ticks`**, and it **depends on packet loss/jitter, not raw ping**.
+CS2 **no longer has** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. The only real network knob is **`cl_net_buffer_ticks`**, and it depends on **timing variance (jitter)** — which exists on long-distance/VPN links **even when loss reads 0**.
 
-- There's **a single `network.cfg`** with `rate 786432` + `cl_net_buffer_ticks 0` (lowest delay). It works for both low and high ping **as long as loss is 0**.
-- **`netmode` (F9)** flips the buffer: **OFF (default)** for stable links; **ON** only if you **see loss/rubberbanding** (smooths it at the cost of ~15 ms input lag).
+- There's **a single `network.cfg`** with `rate 786432` + `cl_net_buffer_ticks 0` (lowest delay, ideal for your low local ping).
+- **`netmode` (F9)** flips between two modes:
+  - **LOW-PING (default):** buffer 0 → lowest delay. For a stable local link.
+  - **HIGH-PING:** buffer 1 (+queue 2) + hit prediction → gives a cushion so your usercommands arrive on time and **fixes "bullets don't register / no damage"** at ~100ms+. If 1 still feels off, try `cl_net_buffer_ticks 2`.
 
-> Real example: playing from Spain with friends in Buenos Aires over a VPN (~114 ms but **0 loss**) → stays **OFF**. Raising the buffer there would only add delay for nothing.
+> On **high ping (VPN to another continent)** turn **HIGH-PING (F9)** ON even with 0 loss: jitter makes your shots arrive mistimed so the server registers them poorly. On your **local Madrid game**, keep it **LOW-PING**.
 
 ## 🧠 Sensitivity / eDPI
 

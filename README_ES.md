@@ -94,14 +94,14 @@ donk **no usa** ninguna. Opcionales útiles:
 
 ## 🌐 Red y Ping (toggle `netmode` en F9)
 
-En CS2 ya **no existen** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. La única palanca real de red es **`cl_net_buffer_ticks`**, y **depende de la pérdida/jitter, no del ping bruto**.
+En CS2 ya **no existen** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. La única palanca real de red es **`cl_net_buffer_ticks`**, y depende de la **variación de tiempos (jitter)** — que existe en enlaces largos/VPN **aunque el `loss` marque 0**.
 
-- Hay **un solo `network.cfg`** con `rate 786432` + `cl_net_buffer_ticks 0` (mínima latencia). Sirve igual para ping bajo y alto **mientras el _loss_ sea 0**.
-- **`netmode` (tecla F9)** alterna el buffer:
-  - **OFF (por defecto):** conexión estable → lo mejor.
-  - **ON:** solo si **ves _loss_/rubberbanding** (sube el buffer para suavizar, a costa de ~15 ms de input lag).
+- Hay **un solo `network.cfg`** con `rate 786432` + `cl_net_buffer_ticks 0` (mínima latencia, ideal para tu ping bajo local).
+- **`netmode` (tecla F9)** alterna entre dos modos:
+  - **LOW-PING (por defecto):** buffer 0 → mínima latencia. Para conexión local estable.
+  - **HIGH-PING:** buffer 1 (+queue 2) + predicción de impactos → da un colchón para que tus _usercommands_ lleguen a tiempo y **arregla el "las balas no registran / no hago daño"** a ~100ms+. Si con 1 sigue raro, prueba `cl_net_buffer_ticks 2`.
 
-> Ejemplo real: jugando desde España con amigos en Buenos Aires vía VPN (≈114 ms pero **0 loss**) → se queda en **OFF**. Subir el buffer ahí solo añadiría delay sin ganar nada.
+> A **ping alto (VPN a otro continente)** activa **HIGH-PING (F9)** aunque el `loss` sea 0: el jitter hace que tus disparos lleguen desfasados y el servidor no los registre bien. En tu **partida local de Madrid**, déjalo en **LOW-PING**.
 
 ## 🧠 Sensibilidad / eDPI
 
