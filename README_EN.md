@@ -35,7 +35,7 @@ A comprehensive and optimized Counter-Strike 2 configuration with useful scripts
 
 - **The binds system has changed.** Instead of using the name of the key, there are **scancodes assigned per key**. This ensures compatibility across different keyboard layouts and languages.
 
-- **The crosshair, sensitivity and viewmodel follow [donk](https://prosettings.net/players/donk)'s pro setup.** The crosshair is tuned for **1280x960 (4:3 _stretched_)**, which is the setup's resolution. On other resolutions/aspect ratios the size/gap will look different — you may want to retune `cl_crosshairsize` and `cl_crosshairgap`.
+- **The crosshair, sensitivity and viewmodel are tuned for competitive play.** The crosshair is tuned for **1280x960 (4:3 _stretched_)**. On other resolutions/aspect ratios the size/gap will look different — you may want to retune `cl_crosshairsize` and `cl_crosshairgap`.
 
 - **CS2-clean only:** legacy CS:GO commands that no longer exist in CS2 were removed (`cl_interp`, `cl_interp_ratio`, `cl_cmdrate`, `cl_updaterate`, `m_rawinput`, `cl_bob*`, `net_graph`...). **Do not re-add them** — they throw _"Unknown command"_ on every launch.
 
@@ -109,9 +109,8 @@ CS2 **no longer has** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. Interpolation is
 | | DPI | Sens | eDPI |
 | --- | --- | --- | --- |
 | This config | 800 | **0.8** | **640** |
-| donk | 800 | 1.25 | 1000 |
 
-640 eDPI is a bit lower (more control/precision, less flick) — well within pro range, but it's a **personal choice**. Edit `mouse.cfg` if you'd rather match donk.
+640 eDPI is a bit lower (more control/precision, less flick) — well within competitive range, but it's a **personal choice**. Edit `mouse.cfg` if you'd rather run a higher sensitivity.
 
 ## ⚠️ CS2 gotchas (2026)
 
@@ -119,16 +118,6 @@ CS2 **no longer has** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. Interpolation is
 - **`host_writeconfig`** (last line of the autoexec) is still valid, but CS2 auto-saves binds anyway; if something won't persist, check Steam Cloud.
 - **Steam Cloud** can overwrite/delete your files — consider disabling Cloud for CS2 if you hand-edit.
 - **Legal scripts:** this config uses **no** null-binds / automated counter-strafe (those get you kicked for "Input Automation" since Aug 2024). The jumpthrow is manual and scroll-wheel bhop is normal input → all legal in official MM.
-
-## 🎯 Crosshair code
-
-Import the crosshair directly in **CS2 → Settings → Game → Crosshair → _Share or Import_ → paste the code → _Import_**:
-
-```
-CSGO-TaM3Q-GFU5p-J4Mtu-bSqZw-vyJzN
-```
-
-> This is donk's **official (green)** crosshair. This repo uses **the same shape in cyan** (`cl_crosshaircolor_R 0 / G 255 / B 255`). Importing donk's code switches it to **green** and, since the menu overrides the autoexec, it sticks; to keep cyan don't import it (it already ships in `crosshair.cfg`) or set `cl_crosshaircolor_B 255` again.
 
 ## ✅ How to verify it loads correctly
 

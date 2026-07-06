@@ -38,7 +38,7 @@ Una configuración completa y optimizada para Counter-Strike 2 con scripts útil
 
 - **El sistema de binds ha cambiado.** En lugar de usar el nombre de la tecla, ahora hay **scancodes asignados por tecla**. Esto asegura compatibilidad entre diferentes distribuciones de teclado e idiomas.
 
-- **La mira, sensibilidad y viewmodel siguen el setup pro de [donk](https://prosettings.net/players/donk).** La mira está pensada para **1280x960 (4:3 _stretched_)**, que es la resolución del setup. En otras resoluciones o aspect ratios el tamaño/gap se verá distinto y puede que quieras reajustar `cl_crosshairsize` y `cl_crosshairgap`.
+- **La mira, sensibilidad y viewmodel están afinados para juego competitivo.** La mira está pensada para **1280x960 (4:3 _stretched_)**. En otras resoluciones o aspect ratios el tamaño/gap se verá distinto y puede que quieras reajustar `cl_crosshairsize` y `cl_crosshairgap`.
 
 - **Solo limpios y válidos para CS2:** se han eliminado los comandos heredados de CS:GO que ya no existen en CS2 (`cl_interp`, `cl_interp_ratio`, `cl_cmdrate`, `cl_updaterate`, `m_rawinput`, `cl_bob*`, `net_graph`...). **No los vuelvas a añadir**: lanzan _"Unknown command"_ en cada arranque.
 
@@ -118,9 +118,8 @@ En CS2 ya **no existen** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. La interpolac
 | | DPI | Sens | eDPI |
 | --- | --- | --- | --- |
 | Este config | 800 | **0.8** | **640** |
-| donk | 800 | 1.25 | 1000 |
 
-640 eDPI es algo más bajo (más control/precisión, menos _flick_) — totalmente dentro del rango pro, pero es una **elección personal**, no "lo óptimo universal". Cámbiala en `mouse.cfg` si prefieres acercarte a donk.
+640 eDPI es algo más bajo (más control/precisión, menos _flick_) — totalmente dentro del rango competitivo, pero es una **elección personal**, no "lo óptimo universal". Cámbiala en `mouse.cfg` si prefieres más sensibilidad.
 
 ## ⚠️ Gotchas de CS2 (2026)
 
@@ -128,16 +127,6 @@ En CS2 ya **no existen** `cl_interp`/`cl_cmdrate`/`cl_updaterate`. La interpolac
 - **`host_writeconfig`** (última línea del autoexec) sigue siendo válido, pero CS2 ya autoguarda binds; si algo no persiste, revisa Steam Cloud.
 - **Steam Cloud** puede pisar o borrar tus archivos: si editas a mano, considera desactivar la nube para CS2.
 - **Scripts legales:** este config **no** usa null-binds / counter-strafe automatizado (te _kickearían_ por "Input Automation" desde ago-2024). El jumpthrow es manual y el bhop con rueda es input normal → todo legal en MM oficial.
-
-## 🎯 Código de mira
-
-Importa la mira directamente en **CS2 → Configuración → Juego → Mira → _Compartir o importar_ → pega el código → _Importar_**:
-
-```
-CSGO-TaM3Q-GFU5p-J4Mtu-bSqZw-vyJzN
-```
-
-> Es la mira **oficial de donk (verde)**. Este repo usa **la misma forma pero en cyan** (`cl_crosshaircolor_R 0 / G 255 / B 255`). Si importas el código de donk, la mira pasará a **verde** y, como el menú pisa al autoexec, se quedará así; para mantener el cyan no la importes (ya viene en `crosshair.cfg`) o vuelve a poner `cl_crosshaircolor_B 255`.
 
 ## ✅ Cómo comprobar que todo carga bien
 
