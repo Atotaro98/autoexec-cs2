@@ -60,7 +60,7 @@ A comprehensive and optimized Counter-Strike 2 configuration with useful scripts
 | Boost Player Contrast | **Enabled** |
 | Wait for Vertical Sync | Disabled |
 | NVIDIA Reflex Low Latency | Disabled* |
-| Maximum FPS In Game | 500 |
+| Maximum FPS In Game | 600 (already set by `video.cfg`) |
 | Multisampling AA Mode | 4x MSAA |
 | Global Shadow Quality | High |
 | Dynamic Shadows | All |

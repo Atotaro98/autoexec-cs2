@@ -4,7 +4,7 @@ A comprehensive and optimized Counter-Strike 2 configuration with useful scripts
 
 > **Note:** This is a personalized fork/copy of [ArminC AutoExec](https://github.com/armync/ArminC-AutoExec), customized to my personal preferences and playstyle. The crosshair, sensitivity and viewmodel are tuned for competitive play, and the config has been **cleaned for CS2** (all removed CS:GO-era cvars stripped out).
 
-> 🎯 **Want the full competitive setup?** The in-game **Video / NVIDIA panel settings** (1280×960 4:3 stretched, low graphics, Reflex, etc.) — which a `.cfg` alone can't set — are documented in the language guides below. Networking is left at the CS2 default on purpose (best hit registration).
+> 🎯 **Want the full competitive setup?** The in-game **Video / NVIDIA panel settings** (1280×960 4:3 stretched, graphics quality, Reflex, etc.) — which a `.cfg` alone can't set — are documented in the language guides below. Networking is left at the CS2 default on purpose (best hit registration).
 
 ## 📖 Documentation
 
