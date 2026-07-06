@@ -42,13 +42,13 @@ Una configuración completa y optimizada para Counter-Strike 2 con scripts útil
 
 - **Solo limpios y válidos para CS2:** se han eliminado los comandos heredados de CS:GO que ya no existen en CS2 (`cl_interp`, `cl_interp_ratio`, `cl_cmdrate`, `cl_updaterate`, `m_rawinput`, `cl_bob*`, `net_graph`...). **No los vuelvas a añadir**: lanzan _"Unknown command"_ en cada arranque.
 
-## 🎯 Ajustes que NO van en el .cfg (menú + panel GPU) — setup tipo donk
+## 🎯 Ajustes que NO van en el .cfg (menú + panel GPU)
 
 > ⚠️ **Esto es clave.** Un autoexec **no puede fijar de forma fiable la resolución ni la calidad gráfica** (CS2 los guarda en los settings del menú). Si quieres el rendimiento competitivo completo, configúralos **a mano** en el juego y en el panel de tu GPU.
 
 ### 🖥️ Vídeo (Configuración → Vídeo)
 
-| Ajuste | Valor (donk) |
+| Ajuste | Valor recomendado |
 | --- | --- |
 | Resolución | **1280 × 960** |
 | Relación de aspecto | **4:3** |
@@ -58,23 +58,26 @@ Una configuración completa y optimizada para Counter-Strike 2 con scripts útil
 
 ### ⚙️ Vídeo avanzado
 
-| Ajuste | Valor (donk) |
+| Ajuste | Valor recomendado |
 | --- | --- |
 | Boost Player Contrast | **Activado** |
 | Esperar sincronización vertical (V-Sync) | Desactivado |
 | NVIDIA Reflex Low Latency | Desactivado* |
-| Antialiasing (MSAA) | 8x MSAA |
+| Máximo FPS en partida | 500 |
+| Antialiasing (MSAA) | 4x MSAA |
 | Calidad de sombras global | Alta |
 | Sombras dinámicas | Todas |
-| Detalle de modelos/texturas | **Bajo** |
-| Modo de filtrado de texturas | Bilinear |
-| Detalle de sombreado (shaders) | **Bajo** |
-| Detalle de partículas | **Bajo** |
-| Oclusión ambiental | Desactivada |
+| Detalle de modelos/texturas | **Alto** |
+| Modo de filtrado de texturas | Anisotrópico 2x |
+| Detalle de sombreado (shaders) | **Alto** |
+| Detalle de partículas | **Alto** |
+| Oclusión ambiental | Media |
 | HDR | Calidad |
 | FidelityFX Super Resolution | Desactivado (máxima calidad) |
 
-> *\*Reflex está **discutido** en 2026: donk lo lleva en **Off**. La ruta alternativa testeada para CS2 (limitado por CPU) es Reflex Off + launch option `-noreflex` + "Low Latency Mode = Ultra" en el panel NVIDIA. **No mezcles** Reflex On del juego con `-noreflex`: elige una de las dos.*
+> 💡 Estos son ajustes **de gama alta** (imagen nítida), pensados sobre todo para AWP/precisión. Si vas justo de FPS, baja **texturas/shaders/partículas a Bajo** y **MSAA** para ganar rendimiento.
+
+> *\*Reflex está **discutido** en 2026: la recomendación por defecto es **Off**. La ruta alternativa testeada para CS2 (limitado por CPU) es Reflex Off + launch option `-noreflex` + "Low Latency Mode = Ultra" en el panel NVIDIA. **No mezcles** Reflex On del juego con `-noreflex`: elige una de las dos.*
 
 ### 🟩 Panel de NVIDIA (para 4:3 _stretched_ + baja latencia)
 
@@ -88,7 +91,7 @@ Una configuración completa y optimizada para Counter-Strike 2 con scripts útil
 
 ### 🚀 Opciones de lanzamiento
 
-donk **no usa** ninguna. Opcionales útiles:
+Esta config **no requiere** ninguna. Opcionales útiles:
 - `-noreflex` → solo si vas por la ruta de baja latencia sin Reflex (ver nota arriba).
 - `-w 1280 -h 960` → fuerza la resolución si el menú no la respeta.
 
